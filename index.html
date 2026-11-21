@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>FOTM Consulting | Frank Grandinetti</title>
-<meta name="description" content="FOTM Consulting: senior project and program management, a la carte. Buy a single project document, book an hour, join as a member, or get help setting up an AI operations tool. Frank Grandinetti, 20+ years delivering IT, cloud, defence and aviation projects.">
+<title>PM On Demand | Frank Grandinetti</title>
+<meta name="description" content="PM On Demand: senior project and program management, a la carte. Buy a single project document, book an hour, join as a member, or get help setting up an AI operations tool. Frank Grandinetti, 20+ years delivering IT, cloud, defence and aviation projects.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap" rel="stylesheet">
@@ -35,7 +35,7 @@ a{color:var(--brand2)}
 header.top{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
 .top .wrap{display:flex;align-items:center;justify-content:space-between;height:64px;gap:12px}
 .logo{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:.06em;color:var(--ink);text-decoration:none}
-.logo .mark{width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,#0e3b5c,#127a7a);display:grid;place-items:center;color:#fff;font-size:11px;letter-spacing:.02em}
+.logo .mark{width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,#0e3b5c,#127a7a);display:grid;place-items:center;color:#fff;font-size:14px;letter-spacing:.02em}
 .logo small{display:block;font-weight:500;letter-spacing:0;color:var(--muted);font-size:12px;line-height:1}
 nav a{color:var(--muted);text-decoration:none;font-weight:500;margin-left:18px;font-size:15px}
 nav a:hover{color:var(--ink)}
@@ -148,7 +148,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 
 <header class="top">
   <div class="wrap">
-    <a class="logo" href="#"><span class="mark">FOTM</span><span>FOTM CONSULTING<small>Frank Grandinetti</small></span></a>
+    <a class="logo" href="#"><span class="mark">PM</span><span>PM ON DEMAND<small>Frank Grandinetti</small></span></a>
     <nav>
       <a href="#ways">How it works</a>
       <a href="#services">Services</a>
@@ -295,7 +295,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
       <h2>Frank Grandinetti</h2>
       <p>I'm a senior program and project manager with more than 20 years of experience delivering secure IT, infrastructure and cloud projects for federal government departments, defence, aviation and critical-infrastructure organizations.</p>
       <p>I've led cloud migrations to Microsoft Azure and AWS, Microsoft 365 rollouts, data centres and secure facilities, and budgets of up to $33M. I'm trained in PMBOK and Agile, and I bring the same discipline to a one-page charter as to a multi-year program.</p>
-      <p>FOTM Consulting puts that experience within reach of any organization, one document, one hour or one project at a time.</p>
+      <p>PM On Demand puts that experience within reach of any organization, one document, one hour or one project at a time.</p>
     </div>
     <div>
       <h3 style="margin-top:0">What I bring</h3>
@@ -357,7 +357,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 
 <footer>
   <div class="wrap">
-    <span>&copy; <span id="yr"></span> FOTM Consulting &middot; Frank Grandinetti &middot; Ottawa, Canada</span>
+    <span>&copy; <span id="yr"></span> PM On Demand &middot; Frank Grandinetti &middot; Ottawa, Canada</span>
     <span id="contactLine"></span>
   </div>
 </footer>
@@ -403,9 +403,9 @@ const SERVICES = [
 const $ = (s) => document.querySelector(s);
 const money = (n) => "$" + n.toLocaleString("en-CA", {minimumFractionDigits: n % 1 ? 2 : 0, maximumFractionDigits: 2});
 const state = {sel: {}, size: {}, member: false, cat: "all"};
-try { const s = JSON.parse(localStorage.getItem("fotm-sel") || "null"); if (s) Object.assign(state, s); } catch (e) {}
+try { const s = JSON.parse(localStorage.getItem("pmod-sel") || "null"); if (s) Object.assign(state, s); } catch (e) {}
 state.size = state.size || {};
-const save = () => { try { localStorage.setItem("fotm-sel", JSON.stringify({sel: state.sel, size: state.size, member: state.member})); } catch (e) {} };
+const save = () => { try { localStorage.setItem("pmod-sel", JSON.stringify({sel: state.sel, size: state.size, member: state.member})); } catch (e) {} };
 const sizeOf = (s) => SIZES.find(z => z.id === (state.size[s.id] || "S"));
 const PER = {month:["Months","months","per month","month"], meeting:["Meetings","meetings","per meeting","meeting"], session:["Sessions","sessions","per session","session"], sprint:["Sprints","sprints","per sprint","sprint"], drawing:["Drawings","drawings","per drawing","drawing"]};
 const unit = (s) => s.hourly ? HOURLY : (s.cat === "artifacts" && !s.per) ? Math.round(s.price * sizeOf(s).mult / 5) * 5 : s.price;
@@ -491,7 +491,7 @@ $("#reqForm").addEventListener("submit", (e) => {
   const body = `Name: ${d.name}\nEmail: ${d.email}\nOrganization: ${d.org || "-"}\nPhone: ${d.phone || "-"}\nNeeded: ${d.when}\nFirst step: ${d.meet}\nAgreed: online only; source data provided in writing or by transcribed meeting\n\nAbout the project:\n${d.about || "-"}\n\nSelected services:\n${renderCart()}`;
   ok.style.display = "block"; ok.style.background = ""; ok.style.color = "";
   if (CONTACT_EMAIL) {
-    location.href = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent("FOTM Consulting request from " + d.name)}&body=${encodeURIComponent(body)}`;
+    location.href = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent("PM On Demand request from " + d.name)}&body=${encodeURIComponent(body)}`;
     ok.textContent = "Thank you! Your email app has opened with your request ready to send. I'll reply within one business day.";
   } else {
     ok.textContent = "Thank you! (Preview: the business email address isn't set up yet, so this request was not sent.)";
