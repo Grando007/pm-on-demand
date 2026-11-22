@@ -1,1 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="12" fill="#0e3b5c"/><text x="32" y="42" font-family="Segoe UI,Arial,sans-serif" font-size="28" font-weight="700" fill="#e8a33d" text-anchor="middle">PM</text></svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 120 120">
+  <circle cx="60" cy="60" r="46" fill="none" stroke="#0e3b5c" stroke-width="12"/>
+  <path d="M60 14 A46 46 0 0 1 106 60" fill="none" stroke="#127a7a" stroke-width="12" stroke-linecap="round"/>
+  <path d="M38 62 l15 15 l30 -32" fill="none" stroke="#e8a33d" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

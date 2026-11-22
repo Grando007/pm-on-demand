@@ -46,14 +46,14 @@ a{color:var(--brand2)}
 header.top{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
 .top .wrap{display:flex;align-items:center;justify-content:space-between;height:64px;gap:12px}
 .logo{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:.06em;color:var(--ink);text-decoration:none}
-.logo .mark{width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,#0e3b5c,#127a7a);display:grid;place-items:center;color:#fff;font-size:14px;letter-spacing:.02em}
+.logo .mark{width:38px;height:38px;flex:none;color:var(--brand)}
 .logo small{display:block;font-weight:500;letter-spacing:0;color:var(--muted);font-size:12px;line-height:1}
 nav a{color:var(--muted);text-decoration:none;font-weight:500;margin-left:18px;font-size:15px}
 nav a:hover{color:var(--ink)}
 .logo span{white-space:nowrap}
 nav{display:flex;align-items:center;white-space:nowrap}
 @media (max-width:980px){nav a:not(.btn){display:none}}
-@media (max-width:480px){.logo{font-size:14px;gap:8px}.logo .mark{width:30px;height:30px;font-size:11px}nav .btn.small{padding:7px 10px;font-size:13px}}
+@media (max-width:480px){.logo{font-size:14px;gap:8px}.logo .mark{width:30px;height:30px}nav .btn.small{padding:7px 10px;font-size:13px}}
 .btn{display:inline-block;border:0;border-radius:10px;padding:12px 18px;font:600 15px Inter,sans-serif;cursor:pointer;text-decoration:none}
 .btn.primary{background:var(--accent);color:var(--accent-ink)}
 .btn.primary:hover{filter:brightness(1.05)}
@@ -74,6 +74,10 @@ section h2{font-family:Fraunces,Georgia,serif;font-size:clamp(28px,3.6vw,38px);m
 section p.sub{color:var(--muted);margin:0 0 28px;max-width:720px}
 .ways{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
 .custom{margin-top:18px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;background:var(--panel);border:1px dashed var(--brand2);border-radius:14px;padding:16px 20px}
+.sec{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+@media (max-width:980px){.sec{grid-template-columns:repeat(2,1fr)}}@media (max-width:560px){.sec{grid-template-columns:1fr}}
+.sec div{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:18px}
+.sec b{display:block;color:var(--brand);margin-bottom:4px}.sec span{color:var(--muted);font-size:15px}
 .custom h3{margin:0 0 4px;font-size:18px}.custom p{margin:0;color:var(--muted);max-width:720px}
 @media (max-width:980px){.ways{grid-template-columns:repeat(2,1fr)}}
 @media (max-width:560px){.ways{grid-template-columns:1fr}}
@@ -161,13 +165,14 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 
 <header class="top">
   <div class="wrap">
-    <a class="logo" href="#"><span class="mark">PM</span><span>PROJECT MANAGEMENT ON DEMAND<small>Project management documents, a la carte</small></span></a>
+    <a class="logo" href="#"><svg class="mark" viewBox="0 0 120 120" aria-hidden="true"><circle cx="60" cy="60" r="46" fill="none" stroke="currentColor" stroke-width="12"/><path d="M60 14 A46 46 0 0 1 106 60" fill="none" stroke="#127a7a" stroke-width="12" stroke-linecap="round"/><path d="M38 62 l15 15 l30 -32" fill="none" stroke="#e8a33d" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/></svg><span>PROJECT MANAGEMENT ON DEMAND<small>Project management documents, a la carte</small></span></a>
     <nav>
       <a href="#ways">How it works</a>
       <a href="#services">Services</a>
       <a href="#membership">Membership</a>
       <a href="#ai">AI consulting</a>
       <a href="#hire">Hire a project manager</a>
+      <a href="#security">Your data</a>
       <a href="#about">About</a>
       <a class="btn primary small" href="#services">Choose services</a>
     </nav>
@@ -305,7 +310,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
       <div class="way"><h3>Part-time</h3><div class="price">$3,400 <small>/ month</small></div><p>About 40 hours a month (two days a week). Right for one project, or a busy team that needs a project manager some of the time.</p><a class="btn ghost small" href="#services" data-tab="hire">Add to estimate</a></div>
       <div class="way feature"><span class="tag">Tailored</span><h3>Larger projects</h3><div class="price" style="font-size:22px">Quote on request</div><p>Need more time than part-time covers? Tell us about your project and we will send you a tailored quote.</p><a class="btn primary small" href="#request">Request a quote</a></div>
       <div class="way"><h3>Monthly packages</h3><div class="price"><small>from</small> $475 <small>/ month</small></div><p>Plan upkeep, or 10 to 20 hours a month of hands-on project management. See Ongoing management.</p><a class="btn ghost small" href="#services" data-tab="managed">See packages</a></div>
-      <div class="way"><h3>Single services</h3><div class="price"><small>from</small> $119</div><p>Meetings with minutes, requirements sessions, data gathering and sprint management, booked one at a time.</p><a class="btn ghost small" href="#services" data-tab="managed">Book a service</a></div>
+      <div class="way"><h3>Single services</h3><div class="price"><small>from</small> $119</div><p>Professional meeting and workshop facilitation with minutes, requirements sessions, data gathering and sprint management, booked one at a time.</p><a class="btn ghost small" href="#services" data-tab="managed">Book a service</a></div>
     </div>
   </div>
 </section>
@@ -348,6 +353,21 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
   </div>
 </section>
 
+<section id="security">
+  <div class="wrap">
+    <h2>Your data is safe with us</h2>
+    <p class="sub">Project information is often sensitive: budgets, staff, contracts, systems. We treat it that way, from the first message to the final document.</p>
+    <div class="sec">
+      <div><b>Encrypted connection</b><span>This site and your requests travel over a secure, encrypted (HTTPS) connection.</span></div>
+      <div><b>Private by default</b><span>Your information is used only to prepare your work. It is never sold, never shared with other clients, and never used to train AI models.</span></div>
+      <div><b>Sensitive-data aware</b><span>Experience on government, defence and critical-infrastructure projects means we know how to handle personal, commercial and security-sensitive information, in line with Canadian privacy law.</span></div>
+      <div><b>Secure transactions</b><span>You pay only after you approve the estimate, by invoice. We never ask for card numbers or passwords by email or phone.</span></div>
+      <div><b>You stay in control</b><span>Your files are kept only as long as the work needs them, and deleted when you ask. Every document is reviewed by a person before it reaches you.</span></div>
+      <div><b>What not to send</b><span>Please do not send classified or Protected B (or higher) government information. For that kind of work, we agree a secure approach with you first.</span></div>
+    </div>
+  </div>
+</section>
+
 <section id="request">
   <div class="wrap">
     <h2>Send your request</h2>
@@ -381,6 +401,8 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
     <details><summary>How does a fixed-price document work?</summary><p>You tell us about your project, we confirm what's in scope, then we write the document with you and revise it once. Larger or unusual scopes get a quote first.</p></details>
     <details><summary>How are document sizes priced?</summary><p>Small is under 5 pages, Medium is 5 to 20 pages, and Large is over 20 pages. Medium is twice the Small price. Large starts at three and a half times the Small price and is confirmed by quote, because very large documents vary the most.</p></details>
     <details><summary>Can we work on time and materials, or a custom statement of work?</summary><p>Yes. On time and materials, you pay for the hours and materials actually used, at the rates on this page, with regular reports so there are no surprises. For a larger or unusual project, we write a custom statement of work that sets out the scope, deliverables, schedule and costs tailored to exactly what you want, and you approve it before any work starts. Ask for either when you request your free estimate.</p></details>
+    <details><summary>Do you offer facilitation?</summary><p>Yes. A professional facilitator can run your meetings (agenda, neutral facilitation, minutes and actions the same day) or a half-day workshop such as a project kick-off, planning session, risk workshop, lessons learned or retrospective. All online.</p></details>
+    <details><summary>How do you protect my information?</summary><p>Everything travels over an encrypted connection, your information is used only for your work and never sold, shared or used to train AI models, and your files are deleted when you ask. We are used to sensitive government and commercial information. Please do not send classified or Protected B (or higher) information; for that kind of work we agree a secure approach first.</p></details>
     <details id="guarantee"><summary>What if I'm not happy with the work?</summary><p>Tell us, and we'll refund what you paid for that document or those hours, and we both agree to end the work there. A refund is the full and only remedy. This guarantee covers documents and hourly time bought on their own; memberships (and the member pricing they unlock) are not refundable.</p></details>
     <details><summary>How is hourly time billed?</summary><p>In half-hour steps at $95 an hour ($80.75 for members). You approve a block of hours in advance and we report the time used.</p></details>
     <details><summary>What does the membership include?</summary><p>Two hours of project management, 15% off everything, the template library and priority booking, for one year. Unused included hours don't carry over.</p></details>
@@ -429,7 +451,8 @@ const SERVICES = [
   {cat:"artifacts", id:"visio",    name:"Drawings & diagrams in Microsoft Visio", desc:"You provide the architecture or design; we draw it for you (or make our best attempt): layouts, network and system diagrams, process flows, org charts. We do not provide architecture or design.", price:149, per:"drawing", qty:1},
   {cat:"artifacts", id:"close",    name:"Closure report & lessons learned",     desc:"What was delivered, what was learned, and the formal handover.",          price:230},
   {cat:"hourly",    id:"hours",    name:"Project management time",              desc:"Facilitation, weekly meetings and minutes, requirements sessions, reporting, advice.", hourly:true, qty:2},
-  {cat:"managed",   id:"meet",     name:"Meeting facilitation & minutes",       desc:"We run your meeting: agenda, facilitation, minutes and action log sent the same day (about 1.5 hours each).", price:119, per:"meeting", qty:4},
+  {cat:"managed",   id:"meet",     name:"Meeting facilitation & minutes",       desc:"A professional facilitator runs your meeting: agenda, neutral facilitation, minutes and action log sent the same day (about 1.5 hours each).", price:119, per:"meeting", qty:4},
+  {cat:"managed",   id:"workshop", name:"Professional facilitation: workshop",  desc:"A half-day facilitated workshop online: project kick-off, planning, risk, lessons learned or retrospective. Includes preparation, facilitation and a written summary of decisions and actions.", price:475, per:"workshop", from:true},
   {cat:"managed",   id:"transcribe", name:"Data gathering by transcribed meeting", desc:"We meet online, the meeting is recorded and transcribed with your permission, and we turn the transcript into the written source data your project needs (1-hour meeting plus write-up).", price:149, per:"session", qty:1},
   {cat:"managed",   id:"reqsess",  name:"Requirements gathering session",       desc:"A 2-hour workshop with your people, plus the written requirements that come out of it.", price:239, per:"session", qty:2},
   {cat:"managed",   id:"sprint",   name:"Sprint management (Scrum Master)",     desc:"One 2-week sprint: planning, stand-ups, review, retrospective and backlog upkeep.", price:795, per:"sprint", qty:1},
@@ -449,7 +472,7 @@ try { const s = JSON.parse(localStorage.getItem("pmod-sel") || "null"); if (s) O
 state.size = state.size || {};
 const save = () => { try { localStorage.setItem("pmod-sel", JSON.stringify({sel: state.sel, size: state.size, member: state.member})); } catch (e) {} };
 const sizeOf = (s) => SIZES.find(z => z.id === (state.size[s.id] || "S"));
-const PER = {month:["Months","months","per month","month"], meeting:["Meetings","meetings","per meeting","meeting"], session:["Sessions","sessions","per session","session"], sprint:["Sprints","sprints","per sprint","sprint"], drawing:["Drawings","drawings","per drawing","drawing"]};
+const PER = {month:["Months","months","per month","month"], meeting:["Meetings","meetings","per meeting","meeting"], session:["Sessions","sessions","per session","session"], sprint:["Sprints","sprints","per sprint","sprint"], drawing:["Drawings","drawings","per drawing","drawing"], workshop:["Workshops","workshops","per workshop","workshop"]};
 const unit = (s) => s.hourly ? HOURLY : (s.cat === "artifacts" && !s.per) ? Math.round(s.price * sizeOf(s).mult / 5) * 5 : s.price;
 
 function renderItems() {
