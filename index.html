@@ -3,8 +3,19 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>PM On Demand | Project management, a la carte</title>
-<meta name="description" content="PM On Demand: senior project and program management, a la carte. Buy a single project document, book an hour, join as a member, hire a project manager, or get help setting up an AI operations tool. Senior project managers with 20+ years delivering IT, cloud, security and infrastructure projects. All online.">
+<title>Project Management On Demand | Project management documents, a la carte</title>
+<meta name="description" content="Project Management On Demand: project management documents and services, a la carte. Buy a single project document, book an hour, join as a member, hire a project manager, or get help setting up an AI operations tool. Senior project managers with 20+ years delivering IT, cloud, security and infrastructure projects. All online, across Canada.">
+<link rel="canonical" href="https://pmondemand.ca/">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Project Management On Demand">
+<meta property="og:title" content="Project Management On Demand: Project management documents, a la carte">
+<meta property="og:description" content="Buy one project document, book an hour, or hire a project manager. Senior project management for IT, cloud, security and infrastructure work. Free phone estimates. 100% online, across Canada.">
+<meta property="og:url" content="https://pmondemand.ca/">
+<meta property="og:image" content="https://pmondemand.ca/share.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="627">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap" rel="stylesheet">
@@ -62,6 +73,8 @@ section{padding:64px 0}
 section h2{font-family:Fraunces,Georgia,serif;font-size:clamp(28px,3.6vw,38px);margin:0 0 8px}
 section p.sub{color:var(--muted);margin:0 0 28px;max-width:720px}
 .ways{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.custom{margin-top:18px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;background:var(--panel);border:1px dashed var(--brand2);border-radius:14px;padding:16px 20px}
+.custom h3{margin:0 0 4px;font-size:18px}.custom p{margin:0;color:var(--muted);max-width:720px}
 @media (max-width:980px){.ways{grid-template-columns:repeat(2,1fr)}}
 @media (max-width:560px){.ways{grid-template-columns:1fr}}
 .way{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:22px;box-shadow:var(--shadow);display:flex;flex-direction:column}
@@ -148,13 +161,13 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 
 <header class="top">
   <div class="wrap">
-    <a class="logo" href="#"><span class="mark">PM</span><span>PM ON DEMAND<small>Project management, a la carte</small></span></a>
+    <a class="logo" href="#"><span class="mark">PM</span><span>PROJECT MANAGEMENT ON DEMAND<small>Project management documents, a la carte</small></span></a>
     <nav>
       <a href="#ways">How it works</a>
       <a href="#services">Services</a>
       <a href="#membership">Membership</a>
       <a href="#ai">AI consulting</a>
-      <a href="#hire">Hire a PM</a>
+      <a href="#hire">Hire a project manager</a>
       <a href="#about">About</a>
       <a class="btn primary small" href="#services">Choose services</a>
     </nav>
@@ -164,7 +177,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 <main>
 <section class="hero">
   <div class="wrap">
-    <span class="eyebrow">Project &amp; program management, a la carte</span>
+    <span class="eyebrow">Project management documents &amp; services, a la carte</span>
     <h1>Senior project leadership,<br>exactly as much as you need.</h1>
     <p class="lead">Buy a single project document, book an hour, become a member, or hire a project manager to run your project. Senior project management for IT, cloud, security and infrastructure work, sold one piece at a time, all done online.</p>
     <div class="cta">
@@ -188,7 +201,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 <section id="ways">
   <div class="wrap">
     <h2>Four ways to work with us</h2>
-    <p class="sub">Pick one, or mix them. You only pay for what you use.</p>
+    <p class="sub">Pick one, or mix them. You only pay for what you use. Time and materials and custom statements of work are also available.</p>
     <div class="ways">
       <div class="way">
         <div class="ic" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M8 13h8M8 17h5"/></svg></div>
@@ -199,10 +212,10 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
       </div>
       <div class="way">
         <div class="ic" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
-        <h3>Book time or hire a PM</h3>
+        <h3>Book time or hire a project manager</h3>
         <div class="price">$95 <small>/ hour</small></div>
         <p>Book hours for meetings, requirements and reporting, or hire a dedicated project manager by the month to run your project.</p>
-        <a class="btn ghost small" href="#hire">Hire a PM</a>
+        <a class="btn ghost small" href="#hire">Hire a project manager</a>
       </div>
       <div class="way feature">
         <span class="tag">Best value</span>
@@ -220,6 +233,13 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
         <a class="btn ghost small" href="#ai">Learn more</a>
       </div>
     </div>
+    <div class="custom">
+      <div>
+        <h3>Need something different? Time and materials, or a custom statement of work.</h3>
+        <p>Prefer to pay only for the hours and materials actually used? We work on time and materials. Have a larger or unusual project? We write a custom statement of work with costs tailored to exactly what you want.</p>
+      </div>
+      <a class="btn primary small" href="#request">Ask for a custom quote</a>
+    </div>
   </div>
 </section>
 
@@ -234,7 +254,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
           <button type="button" data-cat="artifacts" aria-pressed="false">Documents</button>
           <button type="button" data-cat="hourly" aria-pressed="false">Hourly</button>
           <button type="button" data-cat="managed" aria-pressed="false">Ongoing management</button>
-          <button type="button" data-cat="hire" aria-pressed="false">Hire a PM</button>
+          <button type="button" data-cat="hire" aria-pressed="false">Hire a project manager</button>
           <button type="button" data-cat="ai" aria-pressed="false">AI consulting</button>
         </div>
         <div class="items" id="items"></div>
@@ -282,7 +302,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
     <h2>Hire a project manager</h2>
     <p class="sub">Need someone to run the whole project? Hire a dedicated project manager by the month, part-time or full-time, working online with your team. They plan the work, run the meetings, keep the schedule and budget on track, manage risks and report to your sponsors.</p>
     <div class="ways">
-      <div class="way"><h3>Part-time</h3><div class="price">$3,400 <small>/ month</small></div><p>About 40 hours a month (two days a week). Right for one project, or a busy team that needs a PM some of the time.</p><a class="btn ghost small" href="#services" data-tab="hire">Add to estimate</a></div>
+      <div class="way"><h3>Part-time</h3><div class="price">$3,400 <small>/ month</small></div><p>About 40 hours a month (two days a week). Right for one project, or a busy team that needs a project manager some of the time.</p><a class="btn ghost small" href="#services" data-tab="hire">Add to estimate</a></div>
       <div class="way feature"><span class="tag">Full project</span><h3>Full-time</h3><div class="price"><small>from</small> $12,800 <small>/ month</small></div><p>About 160 hours a month. A dedicated project manager for a larger project or program, confirmed by quote.</p><a class="btn primary small" href="#services" data-tab="hire">Add to estimate</a></div>
       <div class="way"><h3>Monthly packages</h3><div class="price"><small>from</small> $475 <small>/ month</small></div><p>Plan upkeep, or 10 to 20 hours a month of hands-on project management. See Ongoing management.</p><a class="btn ghost small" href="#services" data-tab="managed">See packages</a></div>
       <div class="way"><h3>Single services</h3><div class="price"><small>from</small> $119</div><p>Meetings with minutes, requirements sessions, data gathering and sprint management, booked one at a time.</p><a class="btn ghost small" href="#services" data-tab="managed">Book a service</a></div>
@@ -307,8 +327,8 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
   <div class="wrap about">
     <div>
       <span class="eyebrow">About</span>
-      <h2>PM On Demand</h2>
-      <p>PM On Demand sells professional project management a la carte. Instead of hiring a full-time project manager or a large consulting firm, you buy exactly the piece you need: one document, one meeting, one month of management, or a dedicated project manager.</p>
+      <h2>Project Management On Demand</h2>
+      <p>Project Management On Demand (PM On Demand for short) sells professional project management documents and services a la carte. Instead of hiring a full-time project manager or a large consulting firm, you buy exactly the piece you need: one document, one meeting, one month of management, or a dedicated project manager.</p>
       <p>Your work is done by a senior program and project manager with more than 20 years of experience delivering secure IT, infrastructure and cloud projects for government, defence, aviation and critical-infrastructure organizations: cloud migrations to Microsoft Azure and AWS, Microsoft 365 rollouts, data centres, secure facilities, and budgets of up to $33M.</p>
       <p>Everything follows PMBOK and Agile practice, with the same discipline for a one-page charter as for a multi-year program.</p>
     </div>
@@ -343,6 +363,9 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
       <label>First step
         <select name="meet"><option>Free phone estimate</option><option>Online video call</option><option>Email is fine</option></select>
       </label>
+      <label>How would you like to be billed?
+        <select name="billing"><option>Fixed price per item (as selected)</option><option>Time and materials</option><option>Custom statement of work</option><option>Not sure yet, advise me</option></select>
+      </label>
       <label class="full">About your project<textarea name="about" placeholder="What is the project, where is it today, and what would help most?"></textarea></label>
       <div class="full"><b style="font-size:14px">Your selected services</b><div class="summary" id="summary">Nothing selected yet. You can still send a general request.</div></div>
       <label class="full ack"><input type="checkbox" name="ack" required> <span>I understand that all services are delivered online (nothing in person), and that the source data and key information for my project must be provided by me in writing, or captured in the transcript of an online meeting we hold, before the work can be done.</span></label>
@@ -357,6 +380,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
     <h2>Questions</h2>
     <details><summary>How does a fixed-price document work?</summary><p>You tell us about your project, we confirm what's in scope, then we write the document with you and revise it once. Larger or unusual scopes get a quote first.</p></details>
     <details><summary>How are document sizes priced?</summary><p>Small is under 5 pages, Medium is 5 to 20 pages, and Large is over 20 pages. Medium is twice the Small price. Large starts at three and a half times the Small price and is confirmed by quote, because very large documents vary the most.</p></details>
+    <details><summary>Can we work on time and materials, or a custom statement of work?</summary><p>Yes. On time and materials, you pay for the hours and materials actually used, at the rates on this page, with regular reports so there are no surprises. For a larger or unusual project, we write a custom statement of work that sets out the scope, deliverables, schedule and costs tailored to exactly what you want, and you approve it before any work starts. Ask for either through the free phone estimate.</p></details>
     <details id="guarantee"><summary>What if I'm not happy with the work?</summary><p>Tell us, and we'll refund what you paid for that document or those hours, and we both agree to end the work there. A refund is the full and only remedy. This guarantee covers documents and hourly time bought on their own; memberships (and the member pricing they unlock) are not refundable.</p></details>
     <details><summary>How is hourly time billed?</summary><p>In half-hour steps at $95 an hour ($80.75 for members). You approve a block of hours in advance and we report the time used.</p></details>
     <details><summary>What does the membership include?</summary><p>Two hours of project management, 15% off everything, the template library and priority booking, for one year. Unused included hours don't carry over.</p></details>
@@ -373,7 +397,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 
 <footer>
   <div class="wrap">
-    <span>&copy; <span id="yr"></span> PM On Demand &middot; Ottawa, Canada &middot; Online across Canada</span>
+    <span>&copy; <span id="yr"></span> Project Management On Demand &middot; Ottawa, Canada &middot; Online across Canada</span>
     <span id="contactLine"></span>
   </div>
 </footer>
@@ -507,10 +531,10 @@ $("#reqForm").addEventListener("submit", (e) => {
     ok.style.display = "block"; ok.style.background = "#fdecec"; ok.style.color = "#7f1d1d";
     ok.textContent = "Please tick the box to confirm you understand the work is online and your key information comes in writing."; return;
   }
-  const body = `Name: ${d.name}\nEmail: ${d.email}\nOrganization: ${d.org || "-"}\nPhone: ${d.phone || "-"}\nNeeded: ${d.when}\nFirst step: ${d.meet}\nAgreed: online only; source data provided in writing or by transcribed meeting\n\nAbout the project:\n${d.about || "-"}\n\nSelected services:\n${renderCart()}`;
+  const body = `Name: ${d.name}\nEmail: ${d.email}\nOrganization: ${d.org || "-"}\nPhone: ${d.phone || "-"}\nNeeded: ${d.when}\nFirst step: ${d.meet}\nBilling: ${d.billing || "-"}\nAgreed: online only; source data provided in writing or by transcribed meeting\n\nAbout the project:\n${d.about || "-"}\n\nSelected services:\n${renderCart()}`;
   ok.style.display = "block"; ok.style.background = ""; ok.style.color = "";
   if (CONTACT_EMAIL) {
-    location.href = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent("PM On Demand request from " + d.name)}&body=${encodeURIComponent(body)}`;
+    location.href = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent("Project Management On Demand request from " + d.name)}&body=${encodeURIComponent(body)}`;
     ok.textContent = "Thank you! Your email app has opened with your request ready to send. We'll reply within one business day.";
   } else {
     ok.textContent = "Thank you! (Preview: the business email address isn't set up yet, so this request was not sent.)";
