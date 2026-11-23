@@ -154,6 +154,8 @@ form.req textarea{min-height:110px;resize:vertical}
 .promise svg{color:var(--brand2);flex:none}
 .ack{display:flex;gap:10px;align-items:flex-start;background:var(--soft);border-radius:10px;padding:12px;font-size:14px;font-weight:500}
 .ack input{width:18px;height:18px;margin-top:2px;accent-color:var(--brand2);flex:none}
+.req small.hint{display:block;color:var(--muted);font-weight:400;font-size:13px;margin-top:4px}
+.req input[type=file]{padding:8px;background:var(--panel)}
 .faq details{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin-bottom:10px}
 .faq summary{font-weight:600;cursor:pointer}
 .faq p{color:var(--muted);margin:8px 0 0}
@@ -387,6 +389,9 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
         <select name="billing"><option>Fixed price per item (as selected)</option><option>Time and materials</option><option>Custom statement of work</option><option>Not sure yet, advise me</option></select>
       </label>
       <label class="full">About your project<textarea name="about" placeholder="What is the project, where is it today, and what would help most?"></textarea></label>
+      <label class="full">Attach files (optional)<input type="file" name="files" id="files" multiple accept=".pdf,.doc,.docx,.xls,.xlsx,.csv,.ppt,.pptx,.txt,.md,.rtf,.vtt,.srt,.png,.jpg,.jpeg,.gif,.vsdx,.mpp,.json,.xml">
+        <small class="hint">Notes, existing documents, meeting transcripts, or your logo for your documents. PDF, Word, Excel, PowerPoint, Visio, text or images; up to 10 files, 30 MB in total. Sent over an encrypted connection.</small></label>
+      <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
       <div class="full"><b style="font-size:14px">Your selected services</b><div class="summary" id="summary">Nothing selected yet. You can still send a general request.</div></div>
       <label class="full ack"><input type="checkbox" name="ack" required> <span>I understand that all services are delivered online (nothing in person), and that the source data and key information for my project must be provided by me in writing, or captured in the transcript of an online meeting we hold, before the work can be done.</span></label>
       <div class="full"><button class="btn primary" type="submit">Send request</button></div>
@@ -427,7 +432,8 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 <script>
 // ===== Settings: edit these =====
 const CONTACT_EMAIL = "info@pmondemand.ca";   // where client requests go
-const SHOW_EMAIL = true;   // show the address in the footer
+const SHOW_EMAIL = true;
+const API_URL = "https://app.pmondemand.ca/api/request";   // requests and files go to our secure intake app   // show the address in the footer
 const HOURLY = 95, MEMBER_FEE = 250, MEMBER_DISCOUNT = 0.15;
 // Document sizes: the listed price is the Small price; Medium and Large multiply it. Large is a starting price, confirmed by quote.
 const SIZES = [
@@ -553,14 +559,34 @@ $("#reqForm").addEventListener("submit", (e) => {
     ok.style.display = "block"; ok.style.background = "#fdecec"; ok.style.color = "#7f1d1d";
     ok.textContent = "Please tick the box to confirm you understand the work is online and your key information comes in writing."; return;
   }
-  const body = `Name: ${d.name}\nEmail: ${d.email}\nOrganization: ${d.org || "-"}\nPhone: ${d.phone || "-"}\nNeeded: ${d.when}\nFirst step: ${d.meet}\nBilling: ${d.billing || "-"}\nAgreed: online only; source data provided in writing or by transcribed meeting\n\nAbout the project:\n${d.about || "-"}\n\nSelected services:\n${renderCart()}`;
-  ok.style.display = "block"; ok.style.background = ""; ok.style.color = "";
-  if (CONTACT_EMAIL) {
-    location.href = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent("Project Management On Demand request from " + d.name)}&body=${encodeURIComponent(body)}`;
-    ok.textContent = "Thank you! Your email app has opened with your request ready to send. We'll reply within one business day.";
-  } else {
-    ok.textContent = "Thank you! (Preview: the business email address isn't set up yet, so this request was not sent.)";
+  const files = [...$("#files").files];
+  const total = files.reduce((a, x) => a + x.size, 0);
+  if (files.length > 10 || total > 30 * 1024 * 1024) {
+    ok.style.display = "block"; ok.style.background = "#fdecec"; ok.style.color = "#7f1d1d";
+    ok.textContent = "Please attach no more than 10 files, 30 MB in total."; return;
   }
+  const fd = new FormData(f);
+  fd.set("services", renderCart());
+  const btn = f.querySelector('button[type="submit"]');
+  btn.disabled = true; btn.textContent = files.length ? "Sending files..." : "Sending...";
+  ok.style.display = "block"; ok.style.background = ""; ok.style.color = ""; ok.textContent = "Sending your request securely...";
+  fetch(API_URL, { method: "POST", body: fd })
+    .then(r => r.json().then(j => ({ status: r.status, j })))
+    .then(({ status, j }) => {
+      if (j.ok) {
+        ok.textContent = `Thank you! Your request ${j.id} was received. A confirmation is on its way to ${d.email}, and we'll reply within one business day.`;
+        f.reset(); state.sel = {}; state.member = false; save(); renderItems(); renderCart();
+      } else {
+        ok.style.background = "#fdecec"; ok.style.color = "#7f1d1d"; ok.textContent = j.error || "Something went wrong. Please try again.";
+      }
+    })
+    .catch(() => {
+      // the intake app could not be reached: fall back to the client's own email app so the request is not lost
+      const body = `Name: ${d.name}\nEmail: ${d.email}\nOrganization: ${d.org || "-"}\nPhone: ${d.phone || "-"}\nNeeded: ${d.when}\nFirst step: ${d.meet}\nBilling: ${d.billing || "-"}\n\nAbout the project:\n${d.about || "-"}\n\nSelected services:\n${renderCart()}`;
+      location.href = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent("Project Management On Demand request from " + d.name)}&body=${encodeURIComponent(body)}`;
+      ok.textContent = "Our request form could not connect, so your email app has opened with your request ready to send" + (files.length ? " (please attach your files to that email)." : ".");
+    })
+    .finally(() => { btn.disabled = false; btn.textContent = "Send request"; });
 });
 
 $("#yr").textContent = new Date().getFullYear();
